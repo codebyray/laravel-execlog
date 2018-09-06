@@ -6,21 +6,23 @@ use Codebyray\LaravelExeclog\Models\Execlog;
 
 class ExeclogHelper
 {
-    public $execlog;
+    /**
+     * Creates and entry for the users audits.
+     *
+     * @param $userId
+     * @param $action
+     * @param $entry
+     *
+     * @return int
+     */
+    public static function createUserLog($userId, $action, $entry) {
+        $newAudit = new Execlog;
+        $newAudit->user_id = $userId;
+        $newAudit->action = $action;
+        $newAudit->entry = $entry;
+        $newAudit->save();
 
-    public function __construct(Execlog $execlog)
-    {
-        $this->execlog = $execlog;
-    }
-
-    public function createLog($userId, $action, $entry)
-    {
-        $newLog = new $this->execlog;
-        $newLog->user_id = $userId;
-        $newLog->action = $action;
-        $newLog->entry = $entry;
-
-        return true;
+        return $newAudit->id;
     }
 
 }
