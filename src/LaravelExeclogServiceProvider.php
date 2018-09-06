@@ -20,10 +20,6 @@ class LaravelExeclogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/execlog.php' => config_path('execlog.php'),
-        ]);
-
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
