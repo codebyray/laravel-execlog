@@ -13,4 +13,6 @@ class Execlog extends Model
      */
     protected $table = 'execlogs';
 
+    protected $fillable = ['user_id', 'action', 'entry'];
+
 }
